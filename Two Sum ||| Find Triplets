@@ -1,0 +1,40 @@
+#Find Triplets
+arr = [-4, -1, -1, 0, 1, 2, 2]
+target = 0
+
+ans = []
+
+for i in range(len(arr) - 2):
+
+    # Skip duplicate first elements
+    if i > 0 and arr[i] == arr[i - 1]:
+        continue
+
+    j = i + 1
+    k = len(arr) - 1
+
+    while j < k:
+
+        total = arr[i] + arr[j] + arr[k]
+
+        if total == target:
+            ans.append((arr[i], arr[j], arr[k]))
+
+            j += 1
+            k -= 1
+
+            # Skip duplicate second elements
+            while j < k and arr[j] == arr[j - 1]:
+                j += 1
+
+            # Skip duplicate third elements
+            while j < k and arr[k] == arr[k + 1]:
+                k -= 1
+
+        elif total < target:
+            j += 1
+
+        else:
+            k -= 1
+
+print(ans)

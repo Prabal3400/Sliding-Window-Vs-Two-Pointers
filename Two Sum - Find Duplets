@@ -1,0 +1,17 @@
+#Find Duplets
+arr = [1, 2, 2, 3, 4, 5, 5, 6]
+target = 7
+i=0
+j=len(arr)-1
+ans=[]
+while i<j:
+    if (arr[i]+arr[j])==target:
+        if (arr[i],arr[j]) not in ans:
+            ans.append((arr[i],arr[j]))
+        i+=1
+        j-=1
+    elif (arr[i]+arr[j])<target:
+        i+=1
+    else:
+        j-=1
+print(ans)
